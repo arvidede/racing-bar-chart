@@ -1,0 +1,13 @@
+.chart {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 5rem 10rem;
+}
+
+.chart-container {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}

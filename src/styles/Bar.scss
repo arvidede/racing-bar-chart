@@ -1,0 +1,26 @@
+.bar-container {
+    display: flex;
+    font-size: 1.5rem;
+    width: 100%;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.bar-container p {
+    margin: 0;
+}
+
+.bar {
+    position: relative;
+    margin: 0 1rem 0 0;
+    background-color: #ccc;
+    height: 2.5rem;
+    width: 90%;
+    transform-origin: left;
+}
+
+.bar-label {
+    position: absolute;
+    z-index: 1;
+    padding-left: 1rem;
+}
