@@ -1,13 +1,13 @@
 export interface DATA {
     label: string;
     data: number[];
-    rank: number;
+    rank: number[];
 }
 
 export const BAR_DATA = [
     {
         label: 'Brand 1',
-        rank: 1,
+        rank: [],
         data: [
             22,
             22,
@@ -113,7 +113,7 @@ export const BAR_DATA = [
     },
     {
         label: 'Brand 2',
-        rank: 2,
+        rank: [],
         data: [
             11,
             10,
@@ -219,7 +219,7 @@ export const BAR_DATA = [
     },
     {
         label: 'Brand 3',
-        rank: 3,
+        rank: [],
         data: [
             18,
             18,
@@ -325,7 +325,7 @@ export const BAR_DATA = [
     },
     {
         label: 'Brand 4',
-        rank: 4,
+        rank: [],
         data: [
             8,
             8,

@@ -4,6 +4,7 @@ import { Bar } from './Bar'
 import { BAR_DATA, DATA } from '../assets/constants'
 import { Scale } from './Scale'
 import '../styles/Chart.scss'
+import { getRanks } from '../assets/helpers'
 
 const INIT_DELAY = 1
 const MS_PER_SECOND = 1000
@@ -13,13 +14,14 @@ type ChartProps = {}
 export const Chart: React.FC<ChartProps> = () => {
     const time = Hooks.useNumber(0)
     const tempo = Hooks.useNumber(INIT_DELAY)
-    const [barData, setBarData] = useState<DATA[]>([{ label: '', data: [], rank: 1 }])
+    const [barData, setBarData] = useState<DATA[]>([{ label: '', data: [], rank: [] }])
     const [maxValues, setMaxValues] = useState<number[]>([])
 
     const delay = MS_PER_SECOND / tempo.value
 
     Hooks.useInterval(() => {
         time.value < 100 ? time.increase() : time.setNumber(0)
+        setTimeout(() => setBarData(barData.sort((a, b) => b.rank[time.value] - a.rank[time.value])), delay)
     }, delay)
 
     const getMaxValuesPerTimestep = useCallback(() => {
@@ -29,7 +31,8 @@ export const Chart: React.FC<ChartProps> = () => {
     }, [barData])
 
     useEffect(() => {
-        setBarData(BAR_DATA)
+        const sorted = getRanks(BAR_DATA)
+        setBarData(sorted)
         getMaxValuesPerTimestep()
     }, [getMaxValuesPerTimestep])
 
@@ -39,7 +42,7 @@ export const Chart: React.FC<ChartProps> = () => {
             <div className="chart-container">
                 {barData.map(bar => (
                     <Bar
-                        rank={bar.rank}
+                        rank={bar.rank[time.value]}
                         key={bar.label}
                         length={bar.data[time.value]}
                         transitionDuration={delay}
