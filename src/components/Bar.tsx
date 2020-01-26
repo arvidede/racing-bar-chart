@@ -11,36 +11,29 @@ type BarProps = {
 }
 
 export const Bar: React.FC<BarProps> = ({ length, label, transitionDuration, max, rank }: BarProps) => {
-    const styles = {
-        bar: {
-            transform: `scaleX(${length / max})`,
-            transition: `linear ${transitionDuration}ms`,
-        },
-        container: {
-            transform: '',
-            transition: `linear ${transitionDuration}ms`,
-        },
+    const barStyle = {
+        transform: `scaleX(${length / max})`,
+        transition: `linear ${transitionDuration}ms`,
     }
 
-    const [style, setStyle] = useState(styles)
+    const containerStyle = {
+        transform: '',
+        transition: '',
+    }
+
+    const [style, setStyle] = useState(containerStyle)
     const prevRank = usePrevious(rank)
 
     useEffect(() => {
-        if (prevRank && prevRank !== rank) {
-            const difference = prevRank - rank
-            const temp = JSON.parse(JSON.stringify(style))
-            temp.container.transform = `translateY(${difference * 100}%)`
-            setStyle(temp)
-            setTimeout(() => {
-                setStyle(styles)
-            }, transitionDuration)
+        if (prevRank !== rank) {
+            setStyle({ transition: `linear ${transitionDuration}ms`, transform: `translateY(${rank * 100}%)` })
         }
-    }, [rank, prevRank, style])
+    }, [rank, prevRank, style, transitionDuration])
 
     return (
-        <div className="bar-container" style={style.container}>
+        <div className="bar-container" style={style}>
             <p className="bar-label">{label}</p>
-            <div className="bar" style={style.bar}></div>
+            <div className="bar" style={barStyle}></div>
             <p>{length}</p>
         </div>
     )

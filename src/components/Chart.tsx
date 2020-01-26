@@ -21,12 +21,12 @@ export const Chart: React.FC<ChartProps> = () => {
 
     Hooks.useInterval(() => {
         time.value < 100 ? time.increase() : time.setNumber(0)
-        setTimeout(() => setBarData(barData.sort((a, b) => b.rank[time.value] - a.rank[time.value])), delay)
     }, delay)
 
     const getMaxValuesPerTimestep = useCallback(() => {
         const flatData = barData.map(data => data.data)
         const maxVal = flatData.reduceRight((r, a) => r.map((b, i) => (b && Math.max(b, a[i])) || 0))
+        maxVal.push(maxVal[0])
         setMaxValues(maxVal)
     }, [barData])
 
@@ -38,8 +38,8 @@ export const Chart: React.FC<ChartProps> = () => {
 
     return (
         <div className="chart">
-            <Scale max={maxValues[time.value]} ticks={10} />
-            <div className="chart-container">
+            {/* <Scale max={maxValues[time.value]} ticks={10} /> */}
+            <div className="chart-container" style={{ height: `${80 * barData.length}px` }}>
                 {barData.map(bar => (
                     <Bar
                         rank={bar.rank[time.value]}
@@ -51,6 +51,7 @@ export const Chart: React.FC<ChartProps> = () => {
                     />
                 ))}
             </div>
+            <h1>{time.value}</h1>
             <input
                 type="range"
                 min={1}
@@ -60,7 +61,6 @@ export const Chart: React.FC<ChartProps> = () => {
                     tempo.setNumber(e.target.value)
                 }}
             />
-            <p>{time.value}</p>
         </div>
     )
 }
