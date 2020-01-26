@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/racing-bar-chart/static/css/main.3b88084b.chunk.css",
+    "main.js": "/racing-bar-chart/static/js/main.1e9f08b6.chunk.js",
+    "main.js.map": "/racing-bar-chart/static/js/main.1e9f08b6.chunk.js.map",
+    "runtime-main.js": "/racing-bar-chart/static/js/runtime-main.4e8705f6.js",
+    "runtime-main.js.map": "/racing-bar-chart/static/js/runtime-main.4e8705f6.js.map",
+    "static/js/2.b7fd760f.chunk.js": "/racing-bar-chart/static/js/2.b7fd760f.chunk.js",
+    "static/js/2.b7fd760f.chunk.js.map": "/racing-bar-chart/static/js/2.b7fd760f.chunk.js.map",
+    "index.html": "/racing-bar-chart/index.html",
+    "precache-manifest.f411a7ffe4e03d4cd3d2706110d129d0.js": "/racing-bar-chart/precache-manifest.f411a7ffe4e03d4cd3d2706110d129d0.js",
+    "service-worker.js": "/racing-bar-chart/service-worker.js",
+    "static/css/main.3b88084b.chunk.css.map": "/racing-bar-chart/static/css/main.3b88084b.chunk.css.map",
+    "static/js/2.b7fd760f.chunk.js.LICENSE": "/racing-bar-chart/static/js/2.b7fd760f.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4e8705f6.js",
+    "static/js/2.b7fd760f.chunk.js",
+    "static/css/main.3b88084b.chunk.css",
+    "static/js/main.1e9f08b6.chunk.js"
+  ]
+}
